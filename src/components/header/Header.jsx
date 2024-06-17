@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-
+import { Container } from '../../styles/common.styled'
+import * as S from "./Header.styled"
 const Header = ({addTasks}) => {
     const [isOpen, setIsOpen] = useState(false)
   return (
     <header className="header">
-    <div className="container">
+    <Container>
         <div className="header__block">
             <div className="header__logo _show _light">
                 <a href="" target="_self"><img src="/images/logo.png" alt="logo"/></a>
@@ -13,7 +14,7 @@ const Header = ({addTasks}) => {
                 <a href="" target="_self"><img src="/images/logo_dark.png" alt="logo"/></a>
             </div>
             <nav className="header__nav">
-                <button onClick={addTasks} className="header__btn-main-new _hover01" id="btnMainNew"><a href="#">Создать новую задачу</a></button>
+                <S.HeaderBtnMainNew onClick={addTasks} ><a href="#">Создать новую задачу</a></S.HeaderBtnMainNew>
                 <a href="#user-set-target" onClick={()=> setIsOpen(!isOpen)} className="header__user _hover02">Ivan Ivanov</a>
                 {
                     isOpen ?                 <div className="header__pop-user-set pop-user-set" id="user-set-target">
@@ -29,7 +30,7 @@ const Header = ({addTasks}) => {
 
             </nav>					
         </div>
-    </div>			
+    </Container>			
 </header>
   )
 }

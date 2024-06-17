@@ -1,13 +1,16 @@
 import React from 'react'
+import * as S from './Card.styled'
+import { topicData } from '../../lib/Topic'
+
 
 const Card = ({title,date,topic}) => {
     return (
         <div className="cards__item">
             <div className="cards__card card">
                 <div className="card__group">
-                    <div className="card__theme _green">
-                        <p className="_green">{topic}</p>
-                    </div>
+                    <S.CardTheme $color={topicData[topic] || "default"}>
+                        <S.CardThemeText>{topic}</S.CardThemeText>
+                    </S.CardTheme>
                     <a href="#popBrowse" target="_self">
                         <div className="card__btn">
                             <div></div>

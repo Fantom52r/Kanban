@@ -9,7 +9,7 @@ export const tasksData = [
 
     {
         id: 2,
-        topic: "Web Design",
+        topic: "Research",
         status: "Нужно сделать",
         title: "сходить за водой",
         date: "09.06.2024"
@@ -17,7 +17,7 @@ export const tasksData = [
 
     {
         id: 3,
-        topic: "Web Design",
+        topic: "Copywriting",
         status: "Готово",
         title: "набрать Сереге",
         date: "09.06.2024"

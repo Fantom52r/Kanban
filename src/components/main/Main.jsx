@@ -1,21 +1,22 @@
 import React from 'react'
 import Column from '../column/Column'
 import { statusList } from '../../lib/Status'
-
+import { Container } from '../../styles/common.styled'
+import * as S from './Main.styled'
 
 const Main = ({tasks}) => {
     return (
-        <main className="main">
-            <div className="container">
-                <div className="main__block">
-                    <div className="main__content">
+        <S.Main>
+            <Container>
+                <S.MainBlock>
+                    <S.MainContent>
                         {
                             statusList.map((status) => <Column key={status} tasks={tasks.filter((task) => status === task.status)} title={status} />)
                         }
-                    </div>
-                </div>
-            </div>
-        </main>
+                    </S.MainContent>
+                </S.MainBlock>
+            </Container>
+        </S.Main>
     )
 }
 
