@@ -5,14 +5,14 @@ const Column = ({ title, tasks }) => {
 
   return (
     <S.MainColumn>
-      <div className="column__title">
+      <S.ColumnTitle>
         <p>{title}</p>
-      </div>
-      <div className="cards">
+      </S.ColumnTitle>
+      <S.Cards>
         {
           tasks.map((task) => <Card key={task.id} title={task.title} topic={task.topic} date={task.date} />)
         }
-      </div>
+      </S.Cards>
     </S.MainColumn>
   )
 }
