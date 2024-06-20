@@ -9,12 +9,12 @@ const Header = ({ addTasks }) => {
         <S.Header>
             <Container>
                 <S.HeaderBlock>
-                    <S.headerlogo>
+                    <S.HeaderLogo>
                         <a href="" target="_self"><img src="/images/logo.png" alt="logo" /></a>
-                    </S.headerlogo>
-                    <S.headerlogo>
+                    </S.HeaderLogo>
+                    <S.HeaderLogo>
                         <a href="" target="_self"><img src="/images/logo_dark.png" alt="logo" /></a>
-                    </S.headerlogo>
+                    </S.HeaderLogo>
                     <S.HeaderNav>
                         <S.HeaderBtnMainNew onClick={addTasks} ><a href="#">Создать новую задачу</a></S.HeaderBtnMainNew>
                         <a href="#user-set-target" onClick={() => setIsOpen(!isOpen)} className="header__user _hover02">Ivan Ivanov</a>
