@@ -6,19 +6,19 @@ export const topicData = {
 
 export const colors = {
     orange: {
-        color:'#FFE4C2',
-        backgroundColor: '#FF6D00'
+        backgroundColor:'#FFE4C2',
+        color: '#FF6D00'
     },
     purple: {
-        color:'#E9D4FF',
-        backgroundColor: '#9A48F1'
+        backgroundColor:'#E9D4FF',
+        color: '#9A48F1'
     },
     green: {
-        color:'#B4FDD1',
-        backgroundColor:'#06B16E',
+        backgroundColor:'#B4FDD1',
+        color:'#06B16E',
     },
     default: {
-        color: '#fff',
-        backgroundColor: '#94A6BE',
+       backgroundColor: '#fff',
+        color: '#94A6BE',
     }
 }

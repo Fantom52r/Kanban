@@ -26,7 +26,7 @@ const Header = ({ addTasks }) => {
                                     <p>Темная тема</p>
                                     <input type="checkbox" className="checkbox" name="checkbox" />
                                 </S.PopUserSetTheme>
-                                <S.Hover03><a href="#popExit">Выйти</a></S.Hover03>
+                                <S.PopUserSetButton><a href="#popExit">Выйти</a></S.PopUserSetButton>
                             </S.HeaderPopUserSet> : null
                         }
 

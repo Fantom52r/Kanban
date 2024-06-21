@@ -50,6 +50,12 @@ export const CardBtn = styled.div`
   align-items: center;
   justify-content: space-around;
   padding: 2px;
+  & div {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #94a6be;
+  }
 `;
 
 export const CardContent = styled.div`
@@ -69,7 +75,18 @@ export const CardTitle = styled.div`
 `;
 
 export const CardDate = styled.div`
- display: flex;
+  display: flex;
   align-items: center;
   justify-content: flex-start;
+  & svg {
+    width: 13px;
+  }
+
+  & p {
+    margin-left: 6px;
+    font-size: 10px;
+    line-height: 13px;
+    color: #94a6be;
+    letter-spacing: 0.2px;
+  }
 `;
