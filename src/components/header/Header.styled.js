@@ -81,7 +81,7 @@ export const PopUserSetMail = styled.p`
   margin-bottom: 10px;
 `;
 
-export const PopUserSetTheme = styled.p`
+export const PopUserSetTheme = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;

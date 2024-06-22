@@ -10,7 +10,7 @@ const Column = ({ title, tasks }) => {
       </S.ColumnTitle>
       <S.Cards>
         {
-          tasks.map((task) => <Card key={task.id} title={task.title} topic={task.topic} date={task.date} />)
+          tasks.map((task) => <Card key={task.id} id={task.id} title={task.title} topic={task.topic} date={task.date} />)
         }
       </S.Cards>
     </S.MainColumn>
