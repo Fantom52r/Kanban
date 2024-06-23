@@ -8,6 +8,9 @@ import PopBrowse from './components/popups/popBrowse/PopBrowse'
 import Header from './components/header/Header'
 import Main from './components/main/Main'
 import { tasksData } from './lib/Tasks'
+import { GlobalStyles } from './styles/global.styled'
+import { Wrapper } from './styles/common.styled'
+
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -35,7 +38,8 @@ function App() {
   }
   return (
     <>
-      <div className="wrapper">
+    <GlobalStyles/>
+      <Wrapper>
         <PopExit />
         <PopNewCard />
         <PopBrowse />
@@ -44,7 +48,7 @@ function App() {
           loading ? <div style = {{textAlign:"center", paddingTop: "20px"}}>Данные загружаются</div> : <Main tasks={tasks} />
         }
 
-      </div>
+      </Wrapper>
     </>
   )
 }

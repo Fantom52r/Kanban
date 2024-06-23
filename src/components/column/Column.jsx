@@ -1,19 +1,19 @@
 import React from 'react'
 import Card from '../card/Card'
-
+import *as S from './Column.styled'
 const Column = ({ title, tasks }) => {
 
   return (
-    <div className="main__column column">
-      <div className="column__title">
+    <S.MainColumn>
+      <S.ColumnTitle>
         <p>{title}</p>
-      </div>
-      <div className="cards">
+      </S.ColumnTitle>
+      <S.Cards>
         {
           tasks.map((task) => <Card key={task.id} title={task.title} topic={task.topic} date={task.date} />)
         }
-      </div>
-    </div>
+      </S.Cards>
+    </S.MainColumn>
   )
 }
 
