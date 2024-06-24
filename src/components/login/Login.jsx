@@ -18,9 +18,9 @@ const Login = ({ setIsAuth }) => {
 						<h2>Вход</h2>
 					</S.ModalTitle>
 					<S.ModalForm>
-						<input class="modal__input" type="text" name="login" id="formlogin" placeholder="Эл. почта" />
-						<input class="modal__input" type="password" name="password" id="formpassword" placeholder="Пароль" />
-						<button class="modal__btn-enter _hover01" id="btnEnter" onClick={login}> Войти</button>
+						<S.ModalInput type="text" name="login" id="formlogin" placeholder="Эл. почта" />
+						<S.ModalInput type="password" name="password" id="formpassword" placeholder="Пароль" />
+						<S.ModalEnterButton onClick={login}> Войти</S.ModalEnterButton>
 						<S.ModalFormGroup>
 							<p>Нужно зарегистрироваться?</p>
 							<Link to={paths.REGISTRATION}>Регистрируйтесь здесь</Link>
