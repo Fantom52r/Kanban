@@ -105,7 +105,7 @@ export const ModalFormGroup = styled.div`
   letter-spacing: -0.14px;
  }
 `
-export const ModalEnterButton = styded.button`
+export const ModalEnterButton = styled.button`
   width: 100%;
   height: 30px;
   background-color: #565EEF;
