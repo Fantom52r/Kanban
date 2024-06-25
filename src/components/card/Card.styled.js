@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { colors } from "../../lib/Topic";
 import styled from "styled-components";
 
@@ -43,7 +44,7 @@ export const CardGroup = styled.div`
   justify-content: space-between;
 `;
 
-export const CardBtn = styled.div`
+export const CardBtn = styled(Link)`
   width: 24px;
   height: 24px;
   display: flex;

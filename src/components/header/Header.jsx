@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Container } from '../../styles/common.styled'
 import * as S from "./Header.styled"
+import { Link } from 'react-router-dom'
+import { paths } from '../../Routes'
 
 
 const Header = ({ addTasks }) => {
@@ -26,7 +28,7 @@ const Header = ({ addTasks }) => {
                                     <p>Темная тема</p>
                                     <input type="checkbox" className="checkbox" name="checkbox" />
                                 </S.PopUserSetTheme>
-                                <S.PopUserSetButton><a href="#popExit">Выйти</a></S.PopUserSetButton>
+                                <S.PopUserSetButton><Link to={paths.EXIT}>Выйти</Link></S.PopUserSetButton>
                             </S.HeaderPopUserSet> : null
                         }
 
