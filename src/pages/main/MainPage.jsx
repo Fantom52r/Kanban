@@ -3,17 +3,20 @@ import { Outlet } from 'react-router-dom'
 import Main from '../../components/main/Main'
 import { tasksData } from '../../lib/Tasks'
 import Header from '../../components/header/Header'
+import { getAllTasks } from '../../API/tasks'
 
 const MainPage = () => {
   const [loading, setLoading] = useState(true)
-  const [tasks, setTasks] = useState(tasksData)
+  const [error, setError] = useState('')
+  const [tasks, setTasks] = useState([])
   useEffect(() => {
-    const timeOutId = setTimeout(() => {
-      setLoading(false)
-    }, 1000);
-    return () => {
-      clearTimeout(timeOutId)
-    }
+  const user = JSON.parse(localStorage.getItem('user')) 
+    getAllTasks({token:user.token}).then(
+      (data)=> {
+        setTasks(data.tasks)
+      }
+    ).finally(()=> {setLoading(false)})
+    
   }, [])
   const addTasks = () => {
     const newTask =
