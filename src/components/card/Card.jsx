@@ -1,8 +1,9 @@
 import React from 'react'
 import * as S from './Card.styled'
 import { topicData } from '../../lib/Topic'
+import { paths } from '../../Routes'
 
-const Card = ({title,date,topic}) => {
+const Card = ({ title, date, topic, id}) => {
     return (
         <S.CardsItem>
             <S.CardsCard>
@@ -10,13 +11,13 @@ const Card = ({title,date,topic}) => {
                     <S.CardTheme $color={topicData[topic] || "default"}>
                         <S.CardThemeText>{topic}</S.CardThemeText>
                     </S.CardTheme>
-                    <a href="#popBrowse" target="_self">
-                        <S.CardBtn>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </S.CardBtn>
-                    </a>
+
+                    <S.CardBtn to={`/card/${id}`}>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </S.CardBtn>
+
                 </S.CardGroup>
                 <S.CardContent>
                     <a href="" target="_blank">
