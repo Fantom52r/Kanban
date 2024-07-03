@@ -5,18 +5,20 @@ import { tasksData } from '../../lib/Tasks'
 import Header from '../../components/header/Header'
 import { getAllTasks } from '../../API/tasks'
 
-const MainPage = () => {
+const MainPage = ({isAuth}) => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [tasks, setTasks] = useState([])
   useEffect(() => {
-  const user = JSON.parse(localStorage.getItem('user')) 
-    getAllTasks({token:user.token}).then(
-      (data)=> {
+    const user = JSON.parse(localStorage.getItem('user'))
+    getAllTasks({ token: user.token }).then(
+      (data) => {
         setTasks(data.tasks)
       }
-    ).finally(()=> {setLoading(false)})
-    
+    ).catch((error) => {
+      setError(error.message)
+    }).finally(() => { setLoading(false) })
+
   }, [])
   const addTasks = () => {
     const newTask =
@@ -30,15 +32,18 @@ const MainPage = () => {
 
     setTasks([...tasks, newTask])
   }
-  
+
   return (
     <div>
-      <Header addTasks={addTasks} />
-        {
-          loading ? <div style={{ textAlign: "center", paddingTop: "20px" }}>Данные загружаются</div> : <Main tasks={tasks} />
-        }
-
-      <Outlet/>
+      <Header addTasks={addTasks} isAuth={isAuth} />
+      {
+        
+       error ? <p style={{textAlign:"center", color: 'red', paddingTop: '40px', fontSize: '60px'}}>
+       {error}
+       </p> :  loading ? <div style={{ textAlign: "center", paddingTop: "20px" }}>Данные загружаются</div> : <Main tasks={tasks} />
+      }
+    
+      <Outlet />
     </div>
   )
 }

@@ -4,6 +4,7 @@ import { paths } from '../../../Routes'
 
 const PopExit = ({setIsAuth}) => {
     const logOut = () => {
+        localStorage.removeItem('user')
         setIsAuth(false)
     }
   return (
