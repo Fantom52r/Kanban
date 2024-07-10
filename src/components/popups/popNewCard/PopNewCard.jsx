@@ -8,8 +8,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import * as S from './popNewCard.styled.js'
 const PopNewCard = () => {
     const { user } = useUser()
-  const {setTasks} = useTasks()
-  const navigate = useNavigate()
+    const { setTasks } = useTasks()
+    const navigate = useNavigate()
 
     const [selected, setSelected] = useState(null)
     const [taskData, setTaskData] = useState({
@@ -31,50 +31,50 @@ const PopNewCard = () => {
             setTasks(data.tasks)
 
             navigate(paths.MAIN)
-        }).catch((error)=> {
+        }).catch((error) => {
             alert(error.message)
         })
     }
     return (
         < S.PopNewCard>
-            <div className="pop-new-card__container">
-                <div className="pop-new-card__block">
-                    <div className="pop-new-card__content">
-                        <h3 className="pop-new-card__ttl">Создание задачи</h3>
-                        <Link to={paths.MAIN} className="pop-new-card__close">&#10006;</Link>
-                        <div className="pop-new-card__wrap">
-                            <form className="pop-new-card__form form-new" id="formNewCard" action="#">
-                                <div className="form-new__block">
-                                    <label htmlFor="formTitle" className="subttl">Название задачи</label>
-                                    <input value={taskData.title} onChange={onChange} className="form-new__input" type="text" name="title" id="formTitle" placeholder="Введите название задачи..." autoFocus />
-                                </div>
-                                <div className="form-new__block">
-                                    <label htmlFor="textArea" className="subttl">Описание задачи</label>
-                                    <textarea value={taskData.description} onChange={onChange} className="form-new__area" name="description" id="textArea" placeholder="Введите описание задачи..."></textarea>
-                                </div>
-                            </form>
+            <S.PopNewcardContainer>
+                <S.PopNewCardBlock>
+                    <S.PopNewCardContent>
+                        <S.PopNewCardTtl>Создание задачи</S.PopNewCardTtl>
+                        <S.PopNewCardClose to={paths.MAIN}>&#10006;</S.PopNewCardClose>
+                        <S.PopNewCardWrap>
+                            <S.PopNewCardForm>
+                                <S.FormNewBlock>
+                                    <S.SubTtl htmlFor="formTitle">Название задачи</S.SubTtl>
+                                    <S.FormNewInput value={taskData.title} onChange={onChange} type="text" name="title" id="formTitle" placeholder="Введите название задачи..." autoFocus />
+                                </S.FormNewBlock>
+                                <S.FormNewBlock>
+                                    <S.SubTtl htmlFor="textArea">Описание задачи</S.SubTtl>
+                                    <S.FormNewArea value={taskData.description} onChange={onChange} name="description" id="textArea" placeholder="Введите описание задачи..."></S.FormNewArea>
+                                </S.FormNewBlock>
+                            </S.PopNewCardForm>
                             <Calendar selected={selected} setSelected={setSelected} />
-                        </div>
-                        <div className="pop-new-card__categories categories">
-                            <p className="categories__p subttl">Категория</p>
-                            <div className="categories__themes">
+                        </S.PopNewCardWrap>
+                        <S.PopNewCard>
+                            <S.CategoriesP>Категория</S.CategoriesP>
+                            <S.CategoriesThemes>
                                 <label className="categories__label">
                                     <input onChange={onChange} value={'Web Design'} name='topic' className='categories__input' type="radio" />
-                                    <p className="categories__theme _orange _active-category">Web Design</p>
+                                    <S.CategoriesTheme>Web Design</S.CategoriesTheme>
                                 </label>
                                 <label className="categories__label">
                                     <input onChange={onChange} value={'Research'} name='topic' className='categories__input' type="radio" />
-                                    <p className="categories__theme _orange _active-category">Research</p>
+                                    <S.CategoriesTheme>Research</S.CategoriesTheme>
                                 </label>                                <label className="categories__label">
                                     <input onChange={onChange} value={'Copywriting'} name='topic' className='categories__input' type="radio" />
-                                    <p className="categories__theme _orange _active-category">Copywriting</p>
+                                    <S.CategoriesTheme>Copywriting</S.CategoriesTheme>
                                 </label>
-                            </div>
-                        </div>
-                        <button onClick={onclick} className="form-new__create _hover01" id="btnCreate">Создать задачу</button>
-                    </div>
-                </div>
-            </div>
+                            </S.CategoriesThemes>
+                        </S.PopNewCard>
+                        <S.FormNewCreate onClick={onclick} className="form-new__create _hover01" id="btnCreate">Создать задачу</S.FormNewCreate>
+                    </S.PopNewCardContent>
+                </S.PopNewCardBlock>
+            </S.PopNewcardContainer>
         </S.PopNewCard>
     )
 }
