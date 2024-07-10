@@ -1,12 +1,9 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import { paths } from '../../../Routes'
+import { useUser } from '../../../context/UseUser'
 
-const PopExit = ({setIsAuth}) => {
-    const logOut = () => {
-        localStorage.removeItem('user')
-        setIsAuth(false)
-    }
+const PopExit = () => {
+	const {logOut} = useUser()
   return (
     <div className="pop-exit" id="popExit">
     <div className="pop-exit__container">

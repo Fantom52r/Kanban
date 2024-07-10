@@ -1,26 +1,26 @@
 import React, { useState } from 'react'
-import { Link, json, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { paths } from '../../Routes'
 import * as S from '../../styles/common.styled'
-import { login } from '../../API/auth'
+import { login as loginApi } from '../../API/auth'
+import { useUser } from '../../context/UseUser'
 
-const Login = ({ setIsAuth }) => {
+const Login = () => {
 	const [formData, setFormData] = useState({
 		login: '',
 		password: '',
 	})
 	const [error, setError] = useState('')
-	const navigate = useNavigate()
+	const { login } = useUser()
+
 	const onLogin = (event) => {
 		event.preventDefault()
 		if (!formData.login || !formData.password) {
 			return alert("Заполните поля")
 		}
-		login({ login: formData.login, password: formData.password }).then((user) => {
-			localStorage.setItem('user',JSON.stringify(user.user))
-			setIsAuth(true)
-			navigate(paths.MAIN)
-		}).catch((error)=> {
+		loginApi({ login: formData.login, password: formData.password }).then((user) => {
+			login(user.user)
+		}).catch((error) => {
 			setError(error.message)
 		})
 
