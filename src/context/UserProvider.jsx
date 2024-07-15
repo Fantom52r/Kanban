@@ -1,6 +1,7 @@
 import { createContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { getValueFromLs } from "../lib/localstorage"
+import { paths } from "../Routes"
 
 export const UserContext = createContext(null)
 
