@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const PopNewCard = styled.div`
@@ -48,7 +49,7 @@ export const PopNewCardTtl = styled.h3`
   margin-bottom: 20px;
 `;
 
-export const PopNewCardClose = styled.link`
+export const PopNewCardClose = styled(Link)`
   position: absolute;
   top: 20px;
   right: 30px;
