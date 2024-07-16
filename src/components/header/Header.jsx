@@ -3,10 +3,13 @@ import { Container } from '../../styles/common.styled'
 import * as S from "./Header.styled"
 import { Link } from 'react-router-dom'
 import { paths } from '../../Routes'
+import { useUser } from '../../context/UseUser'
 
 
-const Header = ({ addTasks }) => {
+const Header = () => {
     const [isOpen, setIsOpen] = useState(false)
+	const {user} = useUser()
+
     return (
         <S.Header>
             <Container>
@@ -18,12 +21,12 @@ const Header = ({ addTasks }) => {
                         <a href="" target="_self"><img src="/images/logo_dark.png" alt="logo" /></a>
                     </S.HeaderLogo>
                     <S.HeaderNav>
-                        <S.HeaderBtnMainNew onClick={addTasks} ><a href="#">Создать новую задачу</a></S.HeaderBtnMainNew>
-                        <a href="#user-set-target" onClick={() => setIsOpen(!isOpen)} className="header__user _hover02">Ivan Ivanov</a>
+                        <S.HeaderBtnMainNew ><Link to='/new-card'>Создать новую задачу</Link></S.HeaderBtnMainNew>
+                        <a href="#user-set-target" onClick={() => setIsOpen(!isOpen)} className="header__user _hover02">{user.name}</a>
                         {
                             isOpen ? <S.HeaderPopUserSet id="user-set-target">
-                                <S.PopUserSetName>Ivan Ivanov</S.PopUserSetName>
-                                <S.PopUserSetMail>ivan.ivanov@gmail.com</S.PopUserSetMail>
+                                <S.PopUserSetName>{user.name}</S.PopUserSetName>
+                                <S.PopUserSetMail>{user.login}</S.PopUserSetMail>
                                 <S.PopUserSetTheme>
                                     <p>Темная тема</p>
                                     <input type="checkbox" className="checkbox" name="checkbox" />

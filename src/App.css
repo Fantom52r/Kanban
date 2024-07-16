@@ -938,7 +938,7 @@ body {
   }
 }
 @media screen and (max-width: 660px) {
-  .pop-new-card {
+  . {pop-new-card
     top: 70px;
   }
   .pop-new-card__container {

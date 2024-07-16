@@ -1,10 +1,12 @@
 import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 import { paths } from '../../Routes'
+import { useUser } from '../../context/UseUser'
 
-const PrivateRoute = ({isAuth}) => {
+const PrivateRoute = () => {
+  const {user} = useUser()
   return (
-isAuth? <Outlet/>:<Navigate to ={paths.LOGIN}/>
+user? <Outlet/>:<Navigate to ={paths.LOGIN}/>
   )
 }
 

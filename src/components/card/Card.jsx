@@ -35,7 +35,7 @@ const Card = ({ title, date, topic, id}) => {
                                 </clipPath>
                             </defs>
                         </svg>
-                        <p>{date}</p>
+                        <p>{new Date(date).toLocaleDateString('ru-RU', {day:'2-digit',month:'2-digit', year: '2-digit'})}</p>
                     </S.CardDate>
                 </S.CardContent>
             </S.CardsCard>

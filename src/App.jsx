@@ -4,6 +4,7 @@ import './App.css'
 import { GlobalStyles } from './styles/global.styled'
 import { Wrapper } from './styles/common.styled'
 import AppRoutes from './Routes'
+import UserProvider from './context/UserProvider'
 
 
 function App() {
@@ -12,7 +13,9 @@ function App() {
     <>
       <GlobalStyles />
       <Wrapper>
-        <AppRoutes />
+        <UserProvider >
+          <AppRoutes />
+        </UserProvider >
 
 
       </Wrapper>
