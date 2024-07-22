@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { colors } from "../../../lib/Topic";
 
 export const PopNewCard = styled.div`
   width: 100%;
@@ -83,6 +84,7 @@ export const SubTtl = styled.label`
 `;
 
 export const FormNewInput = styled.input`
+  margin: 20px 0;
   width: 100%;
   outline: none;
   padding: 14px;
@@ -111,6 +113,9 @@ export const FormNewArea = styled.textarea`
   font-size: 14px;
   line-height: 1;
   letter-spacing: -0.14px;
+  max-width: 370px;
+  margin-top: 14px;
+  height: 200px;
 `;
 
 export const CategoriesP = styled.p`
@@ -132,6 +137,7 @@ export const CategoriesTheme = styled.p`
   border-radius: 24px;
   margin-right: 7px;
   opacity: 0.4;
+  ${({ $color }) => colors[$color]}
 `;
 
 export const FormNewCreate = styled.button`
@@ -147,3 +153,25 @@ export const FormNewCreate = styled.button`
   color: #ffffff;
   float: right;
 `;
+
+export const LabelColorOrange = styled.label`
+background-color: #FFE4C2;
+color: #FF6D00;
+`
+
+export const LabelColorGreen = styled.label`
+background-color: #B4FDD1;
+color: #06B16E
+`
+
+export const LabelColorPurple = styled.label`
+background-color: #E9D4FF;
+color: #9A48F1
+`
+
+export const Input = styled.input`
+display: none;
+&:checked + p {
+  opacity: 1; 
+}
+`

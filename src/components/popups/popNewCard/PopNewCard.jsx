@@ -6,6 +6,7 @@ import { paths } from '../../../Routes'
 import { useTasks } from '../../../context/UseTasks'
 import { Link, useNavigate } from 'react-router-dom'
 import * as S from './popNewCard.styled.js'
+import { topicData } from '../../../lib/Topic.js'
 const PopNewCard = () => {
     const { user } = useUser()
     const { setTasks } = useTasks()
@@ -55,23 +56,22 @@ const PopNewCard = () => {
                             </S.PopNewCardForm>
                             <Calendar selected={selected} setSelected={setSelected} />
                         </S.PopNewCardWrap>
-                        <S.PopNewCard>
-                            <S.CategoriesP>Категория</S.CategoriesP>
-                            <S.CategoriesThemes>
-                                <label className="categories__label">
-                                    <input onChange={onChange} value={'Web Design'} name='topic' className='categories__input' type="radio" />
-                                    <S.CategoriesTheme>Web Design</S.CategoriesTheme>
-                                </label>
-                                <label className="categories__label">
-                                    <input onChange={onChange} value={'Research'} name='topic' className='categories__input' type="radio" />
-                                    <S.CategoriesTheme>Research</S.CategoriesTheme>
-                                </label>                                <label className="categories__label">
-                                    <input onChange={onChange} value={'Copywriting'} name='topic' className='categories__input' type="radio" />
-                                    <S.CategoriesTheme>Copywriting</S.CategoriesTheme>
-                                </label>
-                            </S.CategoriesThemes>
-                        </S.PopNewCard>
-                        <S.FormNewCreate onClick={onclick} className="form-new__create _hover01" id="btnCreate">Создать задачу</S.FormNewCreate>
+                        <S.CategoriesP>Категория</S.CategoriesP>
+                        <S.CategoriesThemes>
+                            <label className="categories__label">
+                                <S.Input onChange={onChange} value={'Web Design'} name='topic' className='categories__input' type="radio" />
+                                <S.CategoriesTheme $color={topicData['Web Design']}>Web Design</S.CategoriesTheme>
+                            </label>{" "}
+                            <label className="categories__label">
+                                <S.Input onChange={onChange} value={'Research'} name='topic' className='categories__input' type="radio" />
+                                <S.CategoriesTheme $color={topicData.Research}>Research</S.CategoriesTheme>
+                            </label>{" "}
+                            <label className="categories__label">
+                                <S.Input onChange={onChange} value={'Copywriting'} name='topic' className='categories__input' type="radio" />
+                                <S.CategoriesTheme $color={topicData.Copywriting}>Copywriting</S.CategoriesTheme>
+                            </label>{" "}
+                        </S.CategoriesThemes>
+                        <S.FormNewCreate onClick={onclick} id="btnCreate">Создать задачу</S.FormNewCreate>
                     </S.PopNewCardContent>
                 </S.PopNewCardBlock>
             </S.PopNewcardContainer>
