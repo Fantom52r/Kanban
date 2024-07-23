@@ -138,6 +138,9 @@ export const CategoriesTheme = styled.p`
   margin-right: 7px;
   opacity: 0.4;
   ${({ $color }) => colors[$color]}
+  &:hover{
+    opacity:0.6;
+  }
 `;
 
 export const FormNewCreate = styled.button`
