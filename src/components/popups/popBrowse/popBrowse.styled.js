@@ -39,9 +39,16 @@ export const PopBrowseBlock = styled.div`
 export const PopBrowseContent = styled.div`
   display: block;
   text-align: left;
-  & {
-    
+  &.categories__theme {
+    opacity: 1;
   }
+  .theme-down {
+  display: none;
+  margin-bottom: 20px;
+}
+.theme-top {
+  display: block;
+}
 `;
 
 export const PopBrowseTopBlock = styled.div`
