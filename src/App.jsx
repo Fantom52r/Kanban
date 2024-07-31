@@ -1,5 +1,4 @@
 
-import './App.css'
 
 import { GlobalStyles } from './styles/global.styled'
 import { Wrapper } from './styles/common.styled'

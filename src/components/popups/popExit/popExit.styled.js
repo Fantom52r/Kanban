@@ -44,6 +44,9 @@ export const PopExitTtl = styled.div`
   line-height: 30px;
   letter-spacing: -0.4px;
   margin-bottom: 20px;
+  & h2 {
+    font-size: 20px;
+  }
 `;
 
 export const PopExitFormGroup = styled.div`

@@ -7,6 +7,7 @@ import { deleteTask, editTask } from '../../../API/tasks'
 import { useTasks } from '../../../context/UseTasks'
 import { statusList } from '../../../lib/Status'
 import * as S from "./popBrowse.styled"
+import { topicData } from '../../../lib/Topic'
 
 const PopBrowse = () => {
     const { user } = useUser()
@@ -15,7 +16,7 @@ const PopBrowse = () => {
     const navigate = useNavigate()
     const { id } = useParams()
     const [selected, setSelected] = useState(null)
-  const [error, setError] = useState('')
+    const [error, setError] = useState('')
 
     const [taskData, setTaskData] = useState({
         title: '',
@@ -68,64 +69,59 @@ const PopBrowse = () => {
         <S.PopBrowse id="popBrowse">
             <S.PopBrowseContainer>
                 <S.PopBrowseBlock>
-                    <div className="pop-browse__content">
-                        <div className="pop-browse__top-block">
-                            <h3 className="pop-browse__ttl">{taskData.title}</h3>
+                    <S.PopBrowseContent>
+                        <S.PopBrowseTopBlock>
+                            <S.PopBrowseTtl>{taskData.title}</S.PopBrowseTtl>
                             <p>{error}</p>
 
-                            <div className="categories__theme theme-top _orange _active-category">
-                                <p className="_orange">{taskData.topic}</p>
-                            </div>
-                        </div>
-                        <div className="pop-browse__status status">
-                            <p className="status__p subttl">Статус</p>
-                            <div className="status__themes">
+                            <S.CategoriesTheme $color={topicData[taskData.topic]}>
+                                <p>{taskData.topic}</p>
+                            </S.CategoriesTheme>
+                        </S.PopBrowseTopBlock>
+                        <S.Status>
+                            <S.StatusP>Статус</S.StatusP>
+                            <S.StatusThemes>
                                 {
                                     editMode ? statusList.map((status) =>
-                                        <label  key={status} style={{ backgroundColor: taskData.status === status ? "gray" : "transparent", color: taskData.status === status ? "white" : "gray" }} className="status__theme">
+                                        <S.StatusTheme $active={taskData.status===status} key={status} >
                                             <input value={status} name="status" onChange={onChange} type="radio" />
                                             <p>{status}</p>
-                                        </label>) : <div className="status__theme _gray">
-                                        <p className="_gray">{taskData.status}</p>
-                                    </div>
+                                        </S.StatusTheme>) : <S.StatusTheme $active>
+                                        <p>{taskData.status}</p>
+                                    </S.StatusTheme>
                                 }
 
-                            </div>
-                        </div>
-                        <div className="pop-browse__wrap">
-                            <form className="pop-browse__form form-browse" id="formBrowseCard" action="#">
-                                <div className="form-browse__block">
-                                    <label htmlFor="textArea01" className="subttl">Описание задачи</label>
-                                    <textarea className="form-browse__area" name="description" onChange={onChange} value={taskData.description} id="textArea01" readOnly={!editMode} placeholder="Введите описание задачи..."></textarea>
-                                </div>
-                            </form>
+                            </S.StatusThemes>
+                        </S.Status>
+                        <S.PopBrowseWrap>
+                            <S.PopBrowseForm action="#">
+                                <S.FormBrowseBlock>
+                                    <S.SubTtl>Описание задачи</S.SubTtl>
+                                    <S.FormBrowseArea name="description" onChange={onChange} value={taskData.description} id="textArea01" readOnly={!editMode} placeholder="Введите описание задачи..."></S.FormBrowseArea>
+                                </S.FormBrowseBlock>
+                            </S.PopBrowseForm>
                             <Calendar disabled={!editMode} selected={selected} setSelected={setSelected} />
-                        </div>
-                        <div className="theme-down__categories theme-down">
-                            <p className="categories__p subttl">Категория</p>
-                            <div className="categories__theme _orange _active-category">
-                                <p className="_orange">Web Design</p>
-                            </div>
-                        </div>
-                        {
-                            editMode ? <div className="pop-browse__btn-edit">
-                                <div className="btn-group">
-                                    <button onClick={onEditTask} className="btn-edit__edit _btn-bg _hover01"><a href="#">Сохранить</a></button>
-                                    <button onClick={() => setEditMode(false)} className="btn-edit__edit _btn-bor _hover03"><a href="#">Отменить</a></button>
-                                    <button onClick={onDelete} className="btn-edit__delete _btn-bor _hover03" id="btnDelete"><a href="#">Удалить задачу</a></button>
-                                </div>
+                        </S.PopBrowseWrap>
 
-                                <button className="btn-browse__close _btn-bg _hover01"><Link to={paths.MAIN}>Закрыть</Link></button>
-                            </div> : <div className="pop-browse__btn-browse ">
-                                <div className="btn-group">
-                                    <button onClick={() => setEditMode(true)} className="btn-browse__edit _btn-bor _hover03"><a href="#">Редактировать задачу</a></button>
-                                    <button onClick={onDelete} className="btn-browse__delete _btn-bor _hover03"><a href="#">Удалить задачу</a></button>
-                                </div>
-                                <button className="btn-browse__close _btn-bg _hover01"><Link to={paths.MAIN}>Закрыть</Link></button>
-                            </div>
+                        {
+                            editMode ? <S.PopBrowseBtnEdit>
+                                <S.ButtonGroup>
+                                    <button onClick={onEditTask}>Сохранить</button>
+                                    <button onClick={() => setEditMode(false)} >Отменить</button>
+                                    <button onClick={onDelete} >Удалить задачу</button>
+                                </S.ButtonGroup>
+
+                                <S.ButtonClose ><Link to={paths.MAIN}>Закрыть</Link></S.ButtonClose>
+                            </S.PopBrowseBtnEdit> : <S.PopBrowseButton>
+                                <S.ButtonGroup>
+                                    <button onClick={() => setEditMode(true)}>Редактировать задачу</button>
+                                    <button onClick={onDelete}>Удалить задачу</button>
+                                </S.ButtonGroup>
+                                <S.ButtonClose ><Link to={paths.MAIN}>Закрыть</Link></S.ButtonClose>
+                            </S.PopBrowseButton>
                         }
 
-                    </div>
+                    </S.PopBrowseContent>
                 </S.PopBrowseBlock>
             </S.PopBrowseContainer>
         </S.PopBrowse>

@@ -6,16 +6,16 @@ import * as S from "./popExit.styled"
 const PopExit = () => {
     const { logOut } = useUser()
     return (
-        <S.PopExit id="popExit">
+        <S.PopExit>
             <S.PopExitContainer >
                 <S.PopExitBlock >
                     <S.PopExitTtl >
                         <h2>Выйти из аккаунта?</h2>
                     </S.PopExitTtl>
-                    <form className="pop-exit__form" id="formExit" action="#">
+                    <form action="#">
                         <S.PopExitFormGroup>
-                            <S.PopExitYes onClick={logOut}  id="exitYes"><Link to={paths.LOGIN}>Да, выйти</Link> </S.PopExitYes>
-                            <S.PopExitNo id="exitNo"><Link to={paths.MAIN} >Нет, остаться</Link> </S.PopExitNo>
+                            <S.PopExitYes onClick={logOut}><Link to={paths.LOGIN}>Да, выйти</Link> </S.PopExitYes>
+                            <S.PopExitNo><Link to={paths.MAIN} >Нет, остаться</Link> </S.PopExitNo>
                         </S.PopExitFormGroup>
                     </form>
                 </S.PopExitBlock>
