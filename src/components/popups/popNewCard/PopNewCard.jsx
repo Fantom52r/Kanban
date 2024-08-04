@@ -7,10 +7,12 @@ import { useTasks } from '../../../context/UseTasks'
 import { Link, useNavigate } from 'react-router-dom'
 import * as S from './popNewCard.styled.js'
 import { topicData } from '../../../lib/Topic.js'
+
 const PopNewCard = () => {
     const { user } = useUser()
     const { setTasks } = useTasks()
     const navigate = useNavigate()
+    const [error, setError] = useState('')
 
     const [selected, setSelected] = useState(null)
     const [taskData, setTaskData] = useState({
@@ -26,14 +28,14 @@ const PopNewCard = () => {
     function onclick(event) {
         event.preventDefault()
         if (!taskData.title || !taskData.description || !taskData.topic || !selected) {
-            return alert("Заполните поля")
+            return setError("Заполните поля")
         }
         postNewTasks({ data: { ...taskData, date: selected }, token: user.token }).then((data) => {
             setTasks(data.tasks)
 
             navigate(paths.MAIN)
         }).catch((error) => {
-            alert(error.message)
+            setError(error.message)
         })
     }
     return (
@@ -42,6 +44,7 @@ const PopNewCard = () => {
                 <S.PopNewCardBlock>
                     <S.PopNewCardContent>
                         <S.PopNewCardTtl>Создание задачи</S.PopNewCardTtl>
+
                         <S.PopNewCardClose to={paths.MAIN}>&#10006;</S.PopNewCardClose>
                         <S.PopNewCardWrap>
                             <S.PopNewCardForm>
@@ -54,23 +57,30 @@ const PopNewCard = () => {
                                     <S.FormNewArea value={taskData.description} onChange={onChange} name="description" id="textArea" placeholder="Введите описание задачи..."></S.FormNewArea>
                                 </S.FormNewBlock>
                             </S.PopNewCardForm>
+
+
                             <Calendar selected={selected} setSelected={setSelected} />
+
                         </S.PopNewCardWrap>
+                        <p style={{ textAlign: 'right', color: 'red' }}>{error}</p>
+
                         <S.CategoriesP>Категория</S.CategoriesP>
                         <S.CategoriesThemes>
-                            <label className="categories__label">
-                                <S.Input onChange={onChange} value={'Web Design'} name='topic' className='categories__input' type="radio" />
+                            <label>
+                                <S.Input onChange={onChange} value={'Web Design'} name='topic' type="radio" />
                                 <S.CategoriesTheme $color={topicData['Web Design']}>Web Design</S.CategoriesTheme>
                             </label>{" "}
-                            <label className="categories__label">
-                                <S.Input onChange={onChange} value={'Research'} name='topic' className='categories__input' type="radio" />
+                            <label>
+                                <S.Input onChange={onChange} value={'Research'} name='topic' type="radio" />
                                 <S.CategoriesTheme $color={topicData.Research}>Research</S.CategoriesTheme>
                             </label>{" "}
-                            <label className="categories__label">
-                                <S.Input onChange={onChange} value={'Copywriting'} name='topic' className='categories__input' type="radio" />
+                            <label>
+                                <S.Input onChange={onChange} value={'Copywriting'} name='topic' type="radio" />
                                 <S.CategoriesTheme $color={topicData.Copywriting}>Copywriting</S.CategoriesTheme>
                             </label>{" "}
                         </S.CategoriesThemes>
+
+
                         <S.FormNewCreate onClick={onclick} id="btnCreate">Создать задачу</S.FormNewCreate>
                     </S.PopNewCardContent>
                 </S.PopNewCardBlock>

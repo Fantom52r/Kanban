@@ -38,6 +38,29 @@ export const Hover03 = css`
   }
 `;
 
+export const ButtonBor = css`
+  border-radius: 4px;
+  border: 0.7px solid var(--palette-navy-60, #565EEF);
+  outline: none;
+  background: transparent;
+  color: #565EEF;
+  & a {
+  color: #565EEF;
+
+  }
+`
+
+export const ButtonBg = css`
+  border-radius: 4px;
+  background: #565EEF;
+  border: none;
+  outline: none;
+  color: #FFFFFF;
+  & a {
+  color: #FFFFFF;
+  }
+`
+
 export const Modal = styled.div`
 width: 100%;
   height: 100%;

@@ -16,7 +16,7 @@ const Login = () => {
 	const onLogin = (event) => {
 		event.preventDefault()
 		if (!formData.login || !formData.password) {
-			return alert("Заполните поля")
+			return setError("Заполните поля")
 		}
 		loginApi({ login: formData.login, password: formData.password }).then((user) => {
 			login(user.user)
